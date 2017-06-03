@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2017 3:44:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Pojo.Attendance" table="attendance" catalog="attendancedb" optimistic-lock="version">
+        <composite-id name="id" class="Pojo.AttendanceId">
+            <key-property name="id" type="int">
+                <column name="Id" />
+            </key-property>
+            <key-property name="week" type="int">
+                <column name="Week" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="subjectUser" class="Pojo.SubjectUser" update="false" insert="false" fetch="select">
+            <column name="Id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

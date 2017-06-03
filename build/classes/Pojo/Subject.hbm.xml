@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 25, 2017 3:44:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Pojo.Subject" table="subject" catalog="attendancedb" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="Id" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="Name" length="30" not-null="true" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="StartDate" length="10" not-null="true" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="EndDate" length="10" not-null="true" />
+        </property>
+        <property name="startTime" type="time">
+            <column name="StartTime" length="8" not-null="true" />
+        </property>
+        <property name="endTime" type="time">
+            <column name="EndTime" length="8" not-null="true" />
+        </property>
+        <property name="weekDate" type="string">
+            <column name="WeekDate" length="15" not-null="true" />
+        </property>
+        <property name="room" type="string">
+            <column name="Room" length="15" not-null="true" />
+        </property>
+        <set name="subjectUsers" table="subject_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SubjectId" length="10" not-null="true" />
+            </key>
+            <one-to-many class="Pojo.SubjectUser" />
+        </set>
+    </class>
+</hibernate-mapping>
